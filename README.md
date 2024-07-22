@@ -12,3 +12,5 @@ TB的复盘小工具，就是把每天修改过的节点，定时归集到「复
 #### v0.08: 新增功能，增加'modType'字典的内容输出，并处理log.txt不存在的情况。
 #### v0.09: 删除'modType'为102的ThoughtID，并去重处理重复的ThoughtID。
 #### v0.10: 去除modType为301的ThoughtID，并处理缺失syncUpdateDateTime的情况。
+#### v0.11: 自定义配置需要去除的modType。
+#### v0.12: 查询「复盘」节点的最新修改（断开连接）时间为startTime，后来在这基础上+1秒，避免断开的节点下次复盘时重新出现
