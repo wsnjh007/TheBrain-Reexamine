@@ -14,6 +14,7 @@ v0.10: 去除modType为301的ThoughtID，并处理缺失syncUpdateDateTime的情
 v0.11: 自定义配置需要去除的modType。
 v0.12: 查询「复盘」节点的最新修改（断开连接）时间为startTime，后来在这基础上+1秒，避免断开的节点下次复盘时重新出现。
 v0.13: 添加查询「复盘」节点修改记录的自定义查询时间区间。默认为1天，减轻历史日志多了之后的计算压力
+v0.14: 恢复逻辑为使用modificationDateTime进行查询，同时恢复排除sourceType = 3的ID（为LinkID）
 """
 
 import requests
@@ -231,14 +232,18 @@ modifications = get_modifications(brain_id, params)
 if modifications:
     thought_ids = {}
     for log in modifications:
-        if log['modType'] == 803:
-            thought_id = log.get('extraAId')
-        else:
-            thought_id = log.get('sourceId')
+        # 忽略 sourceType 为 3 的日志项
+        if log['sourceType'] != 3:
+            # 在这里添加多个数值，形成“或”的关系，例如803, 804, 805
+            if log['modType'] in [801, 802, 803, 804, 805, 806, 807, 808, 809, 810, 811, 812, 900, 901, 902, 903]:
+                thought_id = log.get('extraAId')
+            else:
+                thought_id = log.get('sourceId')
 
-        if log['modType'] not in excluded_mod_types:
-            modification_time = log.get('syncUpdateDateTime', '未知时间')
-            thought_ids[thought_id] = (modification_time, log['modType'])
+            if log['modType'] not in excluded_mod_types:
+                modification_time = log.get('modificationDateTime', '未知时间')
+                thought_ids[thought_id] = (modification_time, log['modType'])
+
 
     for thought_id, (modification_time, mod_type) in thought_ids.items():
         thought_name = get_thought_name(brain_id, thought_id)
