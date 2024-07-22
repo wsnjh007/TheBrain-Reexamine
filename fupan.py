@@ -12,14 +12,23 @@ v0.08: 根据'modType'数值的字典，在“添加父节点请求数据”的�
 v0.09: 去除modType为102的ThoughtID，并去重。
 v0.10: 去除modType为301的ThoughtID，并处理缺失syncUpdateDateTime的情况。
 v0.11: 自定义配置需要去除的modType。
-v0.12: 查询「复盘」节点的最新修改（断开连接）时间为startTime，后来在这基础上+1秒，避免断开的节点下次复盘时重新出现
+v0.12: 查询「复盘」节点的最新修改（断开连接）时间为startTime，后来在这基础上+1秒，避免断开的节点下次复盘时重新出现。
+v0.13: 添加查询「复盘」节点修改记录的自定义查询时间区间。默认为1天，减轻历史日志多了之后的计算压力
 """
 
 import requests
 from datetime import datetime, timedelta
 import pytz
 
-# 定义modType的字典
+# 自定义时间区间配置，用于指定查询修改日志的时间跨度。需要在「def get_latest_modification_datetime」模块中设置time_span值
+time_config = {
+    'day': 1,    # 1天
+    'week': 7,   # 1周
+    'month': 30, # 1月
+    'custom': 14 # 自定义14天
+}
+
+# 定义modType的字典，包括各类型操作的描述
 mod_type_dict = {
     101: "创建",
     102: "已删除",
@@ -104,10 +113,21 @@ def get_utc_time(dt):
     local_dt = local_tz.localize(dt, is_dst=None)
     return local_dt.astimezone(pytz.utc)
 
-def get_latest_modification_datetime(brain_id, thought_id):
-    """获取指定思维节点的最新modificationDateTime"""
+def get_latest_modification_datetime(brain_id, thought_id, time_span='day'):
+    """
+    获取指定思维节点的最新modificationDateTime，可以自定义查询的时间区间。
+    参数:
+    brain_id: 脑图ID
+    thought_id: 思维节点ID
+    time_span: 时间跨度配置，可选'day', 'week', 'month', 'custom'
+    """
+    end_time = get_current_utc_time()  # 获取当前时间
+    start_time = end_time - timedelta(days=time_config[time_span])  # 根据配置计算起始时间
+
     url = f'{base_url}/brains/{brain_id}/modifications'
     params = {
+        'startTime': start_time.strftime('%Y-%m-%dT%H:%M:%SZ'),
+        'endTime': end_time.strftime('%Y-%m-%dT%H:%M:%SZ'),
         'maxLogs': 100
     }
     try:
@@ -189,7 +209,7 @@ def add_parent(brain_id, child_id, parent_id, modification_time, thought_name):
         return None
 
 # 主执行逻辑
-start_time_str = get_latest_modification_datetime(brain_id, new_parent_id)
+start_time_str = get_latest_modification_datetime(brain_id, new_parent_id, 'day')  # 默认查询1天内的修改日志
 if start_time_str:
     start_time = datetime.strptime(start_time_str, '%Y-%m-%dT%H:%M:%S.%fZ')
 else:
