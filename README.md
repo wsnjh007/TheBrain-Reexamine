@@ -21,31 +21,31 @@
 
 2. 图2: 参数设置1
 
-   ![](https://github.com/wsnjh007/TheBrain-Reexamine/tree/main/images/图2: 参数设置1.png)
+   ![](https://github.com/wsnjh007/TheBrain-Reexamine/tree/main/images/image2.png)
 
 3. 图3: 参数设置2
 
-   ![](https://github.com/wsnjh007/TheBrain-Reexamine/tree/main/images/图3: 参数设置2.png)
+   ![](https://github.com/wsnjh007/TheBrain-Reexamine/tree/main/images/image3.png)
 
 4. 图4: 是否有新的思考的参数设置
 
-   ![](https://github.com/wsnjh007/TheBrain-Reexamine/tree/main/images/图4: 是否有新的思考的参数设置.png)
+   ![](https://github.com/wsnjh007/TheBrain-Reexamine/tree/main/images/image4.png)
 
 5. 图5: 制卡方式的参数设置
 
-   ![](https://github.com/wsnjh007/TheBrain-Reexamine/tree/main/images/图5: 制卡方式的参数设置.png)
+   ![](https://github.com/wsnjh007/TheBrain-Reexamine/tree/main/images/image5.png)
 
 6. 图6: 运行效果
 
-   ![](https://github.com/wsnjh007/TheBrain-Reexamine/tree/main/images/图6: 运行效果.png)
+   ![](https://github.com/wsnjh007/TheBrain-Reexamine/tree/main/images/image6.png)
 
 7. 图7: 交互界面1
 
-   ![](https://github.com/wsnjh007/TheBrain-Reexamine/tree/main/images/图7: 交互界面1.png)
+   ![](https://github.com/wsnjh007/TheBrain-Reexamine/tree/main/images/image7.png)
 
 8. 图8: 交互界面2
 
-   ![](https://github.com/wsnjh007/TheBrain-Reexamine/tree/main/images/图8: 交互界面2.JPEG)
+   ![](https://github.com/wsnjh007/TheBrain-Reexamine/tree/main/images/image8.JPEG)
 
 ### （二）操作介绍
 
