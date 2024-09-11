@@ -1,5 +1,6 @@
 # TbReview
-<!--这是个TheBrain的可视化复盘小工具，就是把每天修改过的特定类型的节点，归集到「回顾」节点下面，复盘结束后，将复盘的的内容整理成卡片，发送至Anki或者flome。-->
+
+这是个TheBrain的可视化复盘小工具，就是把每天修改过的特定类型的节点，归集到「回顾」节点下面，复盘结束后，将复盘的的内容整理成卡片，发送至Anki或者flome。
 
 **取名：TbReview**
 
@@ -14,21 +15,41 @@
 
 ### （一）效果展示
 
-1. 图1: 主界面![截屏2024-09-11 12.11.41](/Users/nijianhai/Downloads/截屏2024-09-11 12.11.41.png)
+1. 图1: 主界面
 
-2. 图2: 参数设置1![截屏2024-09-11 12.12.10](/Users/nijianhai/Downloads/截屏2024-09-11 12.12.10.png)
-3. 图3: 参数设置2![截屏2024-09-11 12.12.25](/Users/nijianhai/Downloads/截屏2024-09-11 12.12.25.png)
-4. 图4: 是否有新的思考的参数设置![截屏2024-09-11 12.12.47](/Users/nijianhai/Downloads/截屏2024-09-11 12.12.47.png)
-5. 图5: 制卡方式的参数设置![截屏2024-09-11 12.13.04](/Users/nijianhai/Downloads/截屏2024-09-11 12.13.04.png)
-6. 图6: 运行效果![截屏2024-09-11 12.13.36](/Users/nijianhai/Downloads/截屏2024-09-11 12.13.36.png)
-7. 图7: 交互界面1![截屏2024-09-11 12.53.28](/Users/nijianhai/Downloads/截屏2024-09-11 12.53.28.png)
+   ![](https://github.com/wsnjh007/TheBrain-Reexamine/tree/main/images/图1: 主界面.png)
+
+2. 图2: 参数设置1
+
+   ![](https://github.com/wsnjh007/TheBrain-Reexamine/tree/main/images/图2: 参数设置1.png)
+
+3. 图3: 参数设置2
+
+   ![](https://github.com/wsnjh007/TheBrain-Reexamine/tree/main/images/图3: 参数设置2.png)
+
+4. 图4: 是否有新的思考的参数设置
+
+   ![](https://github.com/wsnjh007/TheBrain-Reexamine/tree/main/images/图4: 是否有新的思考的参数设置.png)
+
+5. 图5: 制卡方式的参数设置
+
+   ![](https://github.com/wsnjh007/TheBrain-Reexamine/tree/main/images/图5: 制卡方式的参数设置.png)
+
+6. 图6: 运行效果
+
+   ![](https://github.com/wsnjh007/TheBrain-Reexamine/tree/main/images/图6: 运行效果.png)
+
+7. 图7: 交互界面1
+
+   ![](https://github.com/wsnjh007/TheBrain-Reexamine/tree/main/images/图7: 交互界面1.png)
+
 8. 图8: 交互界面2
 
-<img src="/Users/nijianhai/Downloads/截屏2024-09-11 12.53.39.png" alt="截屏2024-09-11 12.53.39" style="zoom:30%;" /><img src="/Users/nijianhai/Downloads/截屏2024-09-11 12.54.06.png" alt="截屏2024-09-11 12.54.06" style="zoom:30%;" /><img src="/Users/nijianhai/Downloads/截屏2024-09-11 12.54.22.png" alt="截屏2024-09-11 12.54.22" style="zoom:30%;" />
+   ![](https://github.com/wsnjh007/TheBrain-Reexamine/tree/main/images/图8: 交互界面2.JPEG)
 
 ### （二）操作介绍
 
-#### 1. 复盘的逻辑
+#### 复盘的逻辑
 
 1. 「回顾」节点：要有一个用来回顾的节点，用来将需要定期复盘的thought连接到「回顾」节点。注意：**「回顾」节点的种类不能是类型**，否则会将所有修改记录的节点内容都制作成卡片，**建议使用便签种类**。
 2. 「问题卡片」类型节点：要有一个用来表示问题的类型节点，**用来做卡片的正面或标题**。这个节点仅用来对卡片内容进行归类，可以是问题，可以直指某个事物，名称可以自拟。
@@ -45,9 +66,7 @@
    - 一个「问题卡片」只能对应一个「精进域」
    - 「洞见卡片」下级还可以有「洞见卡片」
 
-
-
-#### 2. 设置
+#### 设置
 
 1. 参数设置
 
@@ -67,7 +86,7 @@
    - "flomo卡片"表示制作flomo类型的卡片，并发送至flomo。
    - "不制卡"表示不进行卡片制作。
 
-#### 3. 操作交互
+#### 操作交互
 
 - 启动TbReview程序后，首先看到主界面 (图1)，中间有个醒目的‘立即回顾“的按钮，点击后，会根据设置的内容进行不同类型的运行。
 - 思考情况选择"New Ths"时，会先将有创建或修改记录的「洞见卡片」和「原则」两个类型的节点会连接到「回顾」节点。连接结束后，会弹出窗口 (图7)，根据卡片方式的选择会有不同的操作界面 (图8)。
@@ -78,71 +97,9 @@
 
 ### （一）文件结构说明
 
-#### 1. 先展示一下整个文件的结构：
+#### 先展示一下整个文件的结构：
 
-<!--/TbReview
-├── 代码运行模式
-│   ├── anki_sync_mac.sh
-│   ├── anki_sync_win.bat
-│   ├── anki.py
-│   ├── config_mr.txt
-│   ├── config.py
-│   ├── flomo.py
-│   ├── fupan.py
-│   ├── TB_rul.txt
-│   ├── gui_app_card.py
-│   ├── gui_app.py
-│   ├── review_time.txt
-│   ├── TbReview_win.bat
-│   ├── TbReview.app
-├── Mac_App
-│   ├── 01 pyinstaller打包
-│   │   ├── build
-│   │   ├── dist
-│   │   │   ├── TbReview
-│   │   │   ├── TbReview.app
-│   │   ├── anki_sync_mac.sh
-│   │   ├── anki_sync_win.bat
-│   │   ├── anki.py
-│   │   ├── app.icns
-│   │   ├── config_mr.txt
-│   │   ├── config.py
-│   │   ├── flomo.py
-│   │   ├── fupan.py
-│   │   ├── gui_app_card.py
-│   │   ├── gui_app.py
-│   │   ├── gui_app.spec
-│   │   ├── pyinstaller打包命令.txt
-│   │   ├── requirements.txt
-│   │   ├── review_time.txt
-│   │   ├── setup.py
-│   │   ├── TB_rul.txt
-│   │   ├── TbReview.spec
-│   ├── 02 cx_Freeze打包
-│   │   ├── build
-│   │   │   ├── exe.macosx-14.0-arm64-3.12
-│   │   │   ├── TbReviewTool.app
-│   │   ├── anki_sync_mac.sh
-│   │   ├── anki_sync_win.bat
-│   │   ├── anki.py
-│   │   ├── app.icns
-│   │   ├── build_log.txt
-│   │   ├── config_mr.txt
-│   │   ├── config.py
-│   │   ├── flomo.py
-│   │   ├── fupan.py
-│   │   ├── gui_app_card.py
-│   │   ├── gui_app.py
-│   │   ├── requirements.txt
-│   │   ├── review_time.txt
-│   │   ├── setup.py
-│   │   ├── TB_rul.txt
-│   ├── 开箱即用（由于未知原因会闪退一次，会重新启动）
-│       ├── TbReview.app
-├── 操作类型字典.md
-├── README.md-->
-
-#### 2. 「代码运行模式」部分，指通过终端运行的方式
+#### 「代码运行模式」部分，指通过终端运行的方式
 
 - 这部分可以满足个性化，可以进行云端自动化
 - 使用的时候要将「代码运行模式」整个文件夹复制过去
@@ -152,7 +109,7 @@
   2. **【推荐方式】**Automator制作的app，通过Automator修改一下里面的路径就可以点击即用了。如果有兴趣，可以**创建自定义 URL Scheme 来实现使用特定 URL 启动应用程序**。我自定义了URL Scheme，直接在TB创建图钉，添加url，复盘结束后点击即可运行程序，**体验相当丝滑**
   3. 提供了Windows的脚本运行方式，点击TbReview_win.bat即可。相应的要在gui_app.py中将anki_sync_mac.sh改成anki_sync_win.bat
 
-#### 3. 「Mac_App」部分，指Mac系统的app可以点击即用
+#### 「Mac_App」部分，指Mac系统的app可以点击即用
 
 - 用了pyinstaller和 cx_Freeze两种打包方式
 - pyinstaller打包了出现了一个小bug，就是点击app会先闪退一次，但是会重新启动。我估摸这应该是启动是加载什么东西失败了，一直找不到问题原因。不介意的，在「开箱即用」文件夹里
