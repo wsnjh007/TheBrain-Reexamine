@@ -1,0 +1,19 @@
+pyinstaller --clean --onefile --windowed --name=TbReview \
+--add-data 'config.py:.' \
+--add-data 'config_mr.txt:.' \
+--add-data 'TB_rul.txt:.' \
+--add-data 'anki_sync_mac.sh:.' \
+--add-data 'review_time.txt:.' \
+--add-data 'fupan.py:.' \
+--add-data 'anki.py:.' \
+--add-data 'flomo.py:.' \
+--hidden-import=requests \
+--hidden-import=lxml \
+--hidden-import=pytz \
+--hidden-import=bs4 \
+--hidden-import=certifi \
+--hidden-import=jaraco.text \
+--hidden-import=jaraco.context \
+--hidden-import=jaraco.functools \
+--hidden-import=more_itertools \
+gui_app.py
