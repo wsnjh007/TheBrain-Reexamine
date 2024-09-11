@@ -17,7 +17,7 @@
 
 1. 图1: 主界面
 
-   ![](https://github.com/wsnjh007/TheBrain-Reexamine/tree/main/images/图1: 主界面.png)
+   ![](https://github.com/wsnjh007/TheBrain-Reexamine/tree/main/images/image1.png)
 
 2. 图2: 参数设置1
 
