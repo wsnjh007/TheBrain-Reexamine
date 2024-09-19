@@ -19,7 +19,8 @@ from functools import lru_cache  # 引入LRU缓存机制
 import os
 from datetime import datetime, timezone
 from pathlib import Path
-import os
+import base64
+import uuid
 
 # 获取用户的主目录路径
 user_home = os.path.expanduser("~")  # 使用 expanduser 来确保获取正确的用户主目录
@@ -206,9 +207,21 @@ def recursive_parents_search(brain_id, current_parents, type_id, parent_names):
     if new_parents:
         recursive_parents_search(brain_id, new_parents, type_id, parent_names)
 
+def to_short_guid(guid_str):
+    """
+    将标准的 GUID 转换为缩短的 Base64 GUID
+    """
+    guid = uuid.UUID(guid_str)  # 将 GUID 字符串转换为 UUID 对象
+    guid_bytes = guid.bytes_le  # 获取字节数组，按小端序排列（模拟 C# 的 ToByteArray() 方法）
+    
+    short_guid = base64.urlsafe_b64encode(guid_bytes).decode('utf-8').rstrip('=')  # 将字节数组转换为 Base64 字符串，并移除填充字符
+    return short_guid  # 返回缩短后的 GUID 字符串
+
 def generate_brain_local_path(brain_id, parent_id, cleaned_name):
     """生成 TheBrain 本地路径"""
-    base_url = f"brain://api.thebrain.com/{brain_id}/{parent_id}"
+    brain_id_short = to_short_guid(brain_id)  # 将 brain_id 转换为缩短后的 GUID
+    parent_id_short = to_short_guid(parent_id)  # 将 parent_id 转换为缩短后的 GUID
+    base_url = f"brain://api.thebrain.com/{brain_id_short}/{parent_id_short}"
     cleaned_name_encoded = requests.utils.quote(cleaned_name)
     return f"{base_url}/{cleaned_name_encoded}"
 
